@@ -6,7 +6,8 @@
     <head>
       <meta charset="UTF-8">
       <link rel="stylesheet" href="../../../resources/css/coletas/coletasIncluir.css">
-     
+      <link rel="stylesheet" href="../../../resources/css/modal.css">
+      <link rel="stylesheet" href="../../../resources/css/pattern.css">
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
 
       <link rel="shortcut icon" href="../../../resources/img/logo-navbar.png" type="image/x-icon">
@@ -72,12 +73,8 @@
         </div>
       </div>
 
-<!-- 
-      <form id="form-add-collect" action="/coletas/incluir/cadastrar" method="post" hidden>
-        <input id="input-collect-form" name="coleta" value="">
-        <input id="input-client-form" type="text" name="idColeta" value="">
-      </form> -->
       <script src="../../../resources/js/navbar-load.js"></script>
+      <script src="../../../resources/js/modal.js"></script>
       <script src="../../../resources/js/coletas/incluirColeta.js"></script>
 
     </body>

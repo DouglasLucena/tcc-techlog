@@ -6,32 +6,14 @@
 
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="../../../resources/css/veiculos/veiculosIncluir.css">
+	<link rel="stylesheet" href="../../../resources/css/colaboradores/colaboradoresIncluir.css">
+	<link rel="stylesheet" href="../../../resources/css/modal.css">
+      <link rel="stylesheet" href="../../../resources/css/pattern.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 	<link rel="shortcut icon" href="../../../resources/img/logo-navbar.png" type="image/x-icon">
 	<title>Incluir Veículos | TechLog</title>
 </head>
-
-
-<style>
-	.radios{
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-	}
-	.panel-container h1, p{
-		text-align: center;
-	}
-	.form-check{
-		grid-column: 1/3;
-	}
-	.form-check-content{
-		display: grid;
-		grid-template-columns: repeat(2, auto);	
-		margin-bottom: 1rem;
-	}
-</style>
 
 <body id="body-incluir">
 	<jsp:include page="../../../resources/tags/header.jsp" />
@@ -94,7 +76,22 @@
 				</div>
 				<div class="form-group">
 					<label for="input-letra-cnh">Letra da CNH:</label> 
-					<input id="input-letra-cnh" disabled class="form-control mr-sm-2" type="text" placeholder="Ex.: letra da CNH" aria-label="Exemplo: letra da CNH">
+					<select id="input-letra-cnh" disabled class="form-control mr-sm-2">
+						<option value="">-selecione-</option>
+						<option value="Ajudante">A</option>
+						<option value="Motorista">B</option>
+						<option value="Motorista">B + MOPP</option>
+						<option value="Motorista">AB</option>
+						<option value="Motorista">AB + MOPP</option>
+						<option value="Motorista">D</option>
+						<option value="Motorista">D + MOPP</option>
+						<option value="Motorista">AD</option>
+						<option value="Motorista">AD + MOPP</option>
+						<option value="Motorista">E</option>
+						<option value="Motorista">E + MOPP</option>
+						<option value="Motorista">AE</option>
+						<option value="Motorista">AE + MOPP</option>
+					</select>
 				</div>
 				<div class="form-group"></div>
 				<div class="form-check">
@@ -114,7 +111,7 @@
 			</form>
 			<div class="form-buttons">
 				<button type="button" class="btn btn-secondary" onclick="backToHome()">Cancelar</button>
-				<button type="button" class="btn btn-success" onclick="sendForm();">Cadastrar</button>
+				<button type="button" class="btn btn-success" onclick="validateData();">Cadastrar</button>
 			</div>
 		</section>
 	</main>
@@ -122,7 +119,19 @@
 		<input id="colaboradorRequest" type="text" name="colaboradorRequest" value="" hidden>
 	</form>
 
+	<div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Colaborador incluído com sucesso!!!</p>
+          <p>Deseja continuar incluindo Colaboradores?</p>
+          <div class="button-modal">
+            <button type="button" class="btn btn-secondary" onclick="backToHome()">Cancelar</button>
+            <button type="button" class="btn btn-success" onclick="closeModal()">Continuar</button>
+          </div>
+        </div>
+    </div>
 	<script src="../../../resources/js/navbar-load.js"></script>
+	<script src="../../../resources/js/modal.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 	<script src="../../../resources/js/colaboradores/incluirColaborador.js"></script>
 </body>

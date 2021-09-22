@@ -6,7 +6,8 @@
     <head>
       <meta charset="UTF-8">
       <link rel="stylesheet" href="../../../resources/css/coletas/coletasConsultar.css">
-     
+      <link rel="stylesheet" href="../../../resources/css/modal.css">
+      <link rel="stylesheet" href="../../../resources/css/pattern.css">
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
 
       <link rel="shortcut icon" href="../../../resources/img/logo-navbar.png" type="image/x-icon">
@@ -69,6 +70,7 @@
       </main>
 
       <script src="../../../resources/js/navbar-load.js"></script>
+      <script src="../../../resources/js/model.js"></script>
       <script src="../../../resources/js/coletas/incluir.js"></script>
 
     </body>

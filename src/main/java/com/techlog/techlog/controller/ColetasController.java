@@ -17,10 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.techlog.techlog.enums.TipoEquipamentoEnum;
 import com.techlog.techlog.enums.TipoTerceiroEnum;
-import com.techlog.techlog.service.ConsultaCEPService;
-import com.techlog.techlog.service.impl.testeDTO;
 import com.techlog.techlog.viewmodel.ColetasViewModel;
 import com.techlog.techlog.viewmodel.EnderecoViewModel;
+import com.techlog.techlog.viewmodel.MateriaisViewModel;
 import com.techlog.techlog.viewmodel.TerceirosViewModel;
 
 @RestController
@@ -44,9 +43,6 @@ public class ColetasController {
 	
 	@Autowired
 	private HttpSession session;
-	
-	@Autowired
-	private ConsultaCEPService serviceEndereco;
 	
 	@RequestMapping(COLETAS_INCLUIR_RM)
 	private ModelAndView incluirColeta(ModelAndView model) {
@@ -76,9 +72,8 @@ public class ColetasController {
 	
 	@RequestMapping(COLETAS_CADASTRAR_RM)
 	@ResponseBody
-	private void cadastraColeta(@RequestBody ColetasViewModel coleta, String idCliente, ModelAndView model) {
-		//ColetasViewModel coletaVM = gson.fromJson(coleta, ColetasViewModel.class);
-		ColetasViewModel coletaVM = coleta;
+	private void cadastraColeta(@RequestParam String coleta, String idCliente, ModelAndView model) {
+		ColetasViewModel coletaVM = gson.fromJson(coleta, ColetasViewModel.class);
 		List<TerceirosViewModel> lista = (List<TerceirosViewModel>) session.getAttribute(LISTA_FORNECEDORES);
 		TerceirosViewModel terceiro = lista.get(Integer.valueOf(idCliente));
 		coletaVM.setTerceiro(terceiro);
@@ -101,7 +96,7 @@ public class ColetasController {
 				.cnpj("123")
 				.endereco(getEndereco())
 				.equipamento(TipoEquipamentoEnum.ROLLON)
-//				.materiais(getListaMateriais())
+				.materiais(getListaMateriais())
 				.nome("Empresa S")
 				.restricaoHorarios("12:00 as 13:00")
 				.terceirosProximos(getTerceirosProximos())
@@ -111,13 +106,15 @@ public class ColetasController {
 	}
 	
 	private EnderecoViewModel getEndereco() {
-		return EnderecoViewModel.builder().logradouro("casa do douglas").build();
+		return EnderecoViewModel.builder().logradouro("Av. Paulista").build();
 	}
 
-	private List<String> getListaMateriais() {
-		List<String> lista = new ArrayList<String>();
-		lista.add("papelão");
-		lista.add("plastico");
+	private List<MateriaisViewModel> getListaMateriais() {
+		List<MateriaisViewModel> lista = new ArrayList<MateriaisViewModel>();
+		MateriaisViewModel material = new MateriaisViewModel();
+		material.setDescricao("papelão");
+		material.setDescricao("Reciclavel");
+		lista.add(material);
 		return lista;
 	}
 

@@ -57,10 +57,41 @@ function sendForm(){
     form.cnh = $("#input-cnh").val();
     form.letra = $("#input-letra-cnh").val();
     form.treinamentos = trainings;
+    
+    return form;
+}
 
-    console.log("A")
-    $("#colaboradorRequest").val(form);
-    console.log(form)
-    $("#formHidden").submit();
-    console.log("B")
+function validateData() {
+    var worker = sendForm();
+    if (isNotEmpty(worker)) {
+        addWorker(worker);
+        modal.style.display = "block";
+    }
+}
+function isNotEmpty(obj) {
+    debugger
+        for (var prop in obj) {
+            if(obj.perfil!==undefined){
+                if (obj.hasOwnProperty(prop) && obj[prop] !== ""){
+                    return true;
+                }
+            }
+        }
+    return false;
+}
+function addWorker(worker) {
+    $.ajax({
+        url: "/colaboradores/incluir/cadastrar",
+        type: "POST",
+        data: {
+            "colaborador": JSON.stringify(worker)
+        },
+        success: function (data) {
+            alert("foi")
+            //cleanFields();
+        },
+        error: function (error) {
+            alert('error: ' + error)
+        }
+    })
 }
